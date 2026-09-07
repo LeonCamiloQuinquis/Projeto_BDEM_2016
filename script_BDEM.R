@@ -14,8 +14,13 @@
 # NÃO altere as linhas de qualquer outra ETAPA do script e nem do cabeçalho
 
 # Tarefa 1. Leitura do banco de dados SIM_2016 com 1309774 linhas e 87 colunas com o nome de dados_sim
+
+dados_sim <- read.csv2("SIM_2016.csv")
+
 # Verificar se a leitura foi feita corretamente e a estrutura dos dados
 
+head(dados_sim)
+str(dados_sim)
 
 # Ao terminar a Tarefa 1 commit com a mensagem "script BDEM - SIM - tarefa 1" e envie para o repositório Projeto_BDEM_2016
 
@@ -24,6 +29,8 @@
 # As colunas serão: 1, 3, 9, 10, 11, 14, 17, 35, 47
 # Nomes das respectivas variáveis: CONTADOR, TIPOBITO, IDADE, SEXO, RACACOR, ESC2010, CODMUNRES, TPMORTEOCO, CAUSABAS
 
+dados_sim_1 <- dados_sim[ , c(1, 3, 9, 10, 11, 14, 17, 35, 47)]
+colnames(dados_sim_1) <- c("CONTADOR", "TIPOBITO", "IDADE", "SEXO", "RACACOR", "ESC2010", "CODMUNRES", "TPMORTEOCO", "CAUSABAS")
 
 # Ao terminar a Tarefa 2 commit com a mensagem "script BDEM - SIM - tarefas 1 a 2" e envie para o repositório Projeto_BDEM_2016
 
