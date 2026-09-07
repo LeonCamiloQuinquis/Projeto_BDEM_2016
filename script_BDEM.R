@@ -61,6 +61,15 @@ dados_sim_2 <- dados_sim_1[substr(as.character(dados_sim_1$CODMUNRES), 1, 2) == 
 # Atenção: a unidade de medida de IDADE no DICIONÀRIO do SIM está errada
 # O propósito das avaliações acima é verificar se as categorias estão de acordo com o dicionário do SIM ou se aparecem categorias estranhas
 
+variaveis_cat <- c("TIPOBITO", "SEXO", "RACACOR", "ESC2010", "TPMORTEOCO", "CAUSABAS")
+lapply(dados_sim_2[variaveis_cat], function(x) table(x, useNA = "always"))
+lapply(dados_sim_2[variaveis_cat], function(x) round(prop.table(table(x, useNA = "always")) * 100, 2))
+
+idade_char <- sprintf("%04s", as.character(dados_sim_2$IDADE))
+unidade_medida <- substr(idade_char, 1, 1)
+table(unidade_medida, useNA = "always")
+valor_idade <- as.numeric(substr(idade_char, 2, 4))
+tapply(valor_idade, unidade_medida, summary)
 
 # Ao terminar a Tarefa 4 commit com a mensagem "script BDEM - SIM - tarefas 1 a 4" e envie para o repositório Projeto_BDEM_2016
 
