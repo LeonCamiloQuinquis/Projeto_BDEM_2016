@@ -84,10 +84,7 @@ dados_sim_2$RACACOR[dados_sim_2$RACACOR %in% c("9", 9)] <- NA
 dados_sim_2$ESC2010[dados_sim_2$ESC2010 %in% c("9", 9)] <- NA
 dados_sim_2$TPMORTEOCO[dados_sim_2$TPMORTEOCO %in% c("9", 9)] <- NA
 idade_char <- sprintf("%03d", as.numeric(as.character(dados_sim_2$IDADE)))
-dados_sim_2$IDADE[
-  dados_sim_2$IDADE %in% c("999", "9999", 999, 9999) | 
-    substr(idade_char, 1, 1) == "9"
-] <- NA
+dados_sim_2$IDADE[dados_sim_2$IDADE %in% c("999", "9999", 999, 9999) | substr(idade_char, 1, 1) == "9"] <- NA
 
 # Ao terminar a Tarefa 5 commit com a mensagem "script BDEM - SIM - tarefas 1 a 5" e envie para o repositório Projeto_BDEM_2016
 
@@ -98,6 +95,11 @@ dados_sim_2$IDADE[
 # ATENçÃO: 1. Na hora de escrever os labels, somente a PRIMEIRA LETRA da legenda é maiúscula. Exemplo para SEXO: Feminino e Masculino
 #          2. Nesta Tarefa 6 não crie novas variáveis dentro do banco de dados
 
+dados_sim_2$TIPOBITO <- factor(dados_sim_2$TIPOBITO,levels = c(1, 2),labels = c("Fetal", "Não fetal"))
+dados_sim_2$SEXO <- factor(dados_sim_2$SEXO,levels = c(1, 2),labels = c("Masculino", "Feminino"))
+dados_sim_2$RACACOR <- factor(dados_sim_2$RACACOR,levels = c(1, 2, 3, 4, 5),labels = c("Branca", "Preta", "Amarela", "Parda", "Indígena"))
+dados_sim_2$ESC2010 <- factor(dados_sim_2$ESC2010,levels = c(0, 1, 2, 3, 4, 5),labels = c("Nenhuma","Fundamental I (1ª a 4ª série)","Fundamental II (5ª a 8ª série)","Médio (antigo 2º grau)","Superior incompleto","Superior completo"))
+dados_sim_2$TPMORTEOCO <- factor(dados_sim_2$TPMORTEOCO,levels = c(1, 2, 3, 4, 5, 8),labels = c("Na gravidez","No parto","No abortamento","Até 42 dias após o parto","De 43 dias a 1 ano após o parto","Não ocorreu nestas condições"))
 
 # Ao terminar a Tarefa 6 commit com a mensagem "script BDEM - SIM - tarefas 1 a 6" e envie para o repositório Projeto_BDEM_2016
 
