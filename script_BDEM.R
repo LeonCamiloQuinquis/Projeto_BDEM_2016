@@ -79,6 +79,15 @@ tapply(valor_idade, unidade_medida, summary)
 # Verifique o dicionário do SIM para identificar qual o código das categorias de cada variável
 # Em variáveis quantitativas como IDADE verificar se existem valores como 9999 para NA
 
+dados_sim_2$SEXO[dados_sim_2$SEXO %in% c("0", "9", 0, 9)] <- NA
+dados_sim_2$RACACOR[dados_sim_2$RACACOR %in% c("9", 9)] <- NA
+dados_sim_2$ESC2010[dados_sim_2$ESC2010 %in% c("9", 9)] <- NA
+dados_sim_2$TPMORTEOCO[dados_sim_2$TPMORTEOCO %in% c("9", 9)] <- NA
+idade_char <- sprintf("%03d", as.numeric(as.character(dados_sim_2$IDADE)))
+dados_sim_2$IDADE[
+  dados_sim_2$IDADE %in% c("999", "9999", 999, 9999) | 
+    substr(idade_char, 1, 1) == "9"
+] <- NA
 
 # Ao terminar a Tarefa 5 commit com a mensagem "script BDEM - SIM - tarefas 1 a 5" e envie para o repositório Projeto_BDEM_2016
 
